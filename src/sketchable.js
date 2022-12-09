@@ -460,9 +460,11 @@
    */
   function getMousePos(e) {
     var elem = e.target, pos = offset(elem);
+    var sx = elem.width / elem.offsetWidth;
+    var sy = elem.height / elem.offsetHeight;
     return {
-      x: Math.round(e.pageX - pos.left),
-      y: Math.round(e.pageY - pos.top),
+      x: Math.round(e.pageX - pos.left) * sx,
+      y: Math.round(e.pageY - pos.top) * sy,
       time: Date.now(),
     };
   };
