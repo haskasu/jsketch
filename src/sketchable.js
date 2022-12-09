@@ -275,12 +275,12 @@
       Event.remove(elem, 'touchmove', touchmoveHandler);
       Event.remove(elem, 'touchend', touchupHandler);
 
-      dataBind(elem)[namespace] = null;
-
       if (typeof options.events.destroy === 'function')
         options.events.destroy(elem, data);
 
-      return this;
+        dataBind(elem)[namespace] = null;
+
+        return this;
     },
     /**
      * Decorate event. Will execute default event first.
@@ -463,8 +463,8 @@
     var sx = elem.width / elem.offsetWidth;
     var sy = elem.height / elem.offsetHeight;
     return {
-      x: Math.round(e.pageX - pos.left) * sx,
-      y: Math.round(e.pageY - pos.top) * sy,
+      x: Math.round((e.pageX - pos.left) * sx),
+      y: Math.round((e.pageY - pos.top) * sy),
       time: Date.now(),
     };
   };
